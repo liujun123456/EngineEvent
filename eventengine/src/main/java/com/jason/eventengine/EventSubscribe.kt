@@ -1,7 +1,6 @@
 package com.jason.eventengine
 
-import java.lang.annotation.Retention
-import java.lang.annotation.RetentionPolicy
+import kotlin.annotation.Retention
 
 
 /**
@@ -9,7 +8,7 @@ import java.lang.annotation.RetentionPolicy
  * @Date   2019-12-12
  * @mobile 18711832023
  */
-@Retention(RetentionPolicy.RUNTIME)
+@Retention(AnnotationRetention.RUNTIME)
 @Target(AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER, AnnotationTarget.PROPERTY_SETTER)
 annotation class EventSubscribe(
 

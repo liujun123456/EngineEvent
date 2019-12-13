@@ -42,7 +42,7 @@ class EventEngine private constructor() {
 
     fun unregister(classObject: Any){
         synchronized(eventSource){
-            eventSource.remove(classObject)
+            eventSource.remove(classObject.javaClass.name)
         }
     }
 

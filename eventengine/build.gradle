@@ -2,6 +2,8 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 
+apply plugin: 'com.novoda.bintray-release'
+
 android {
     compileSdkVersion 28
 
@@ -32,3 +34,4 @@ dependencies {
 repositories {
     mavenCentral()
 }
+apply from: 'bintrayconfig.gradle'

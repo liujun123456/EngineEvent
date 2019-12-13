@@ -21,7 +21,7 @@ class EventFinder(var processor:EventProcessor){
         //todo 每次新注册 都重新刷新对应事件源，防止重复 如果做缓存，那粘性事件怎么解决 ？？
         val methodList=CopyOnWriteArrayList<MethodHolder>()
 
-        eventSource[classObject]=methodList
+        eventSource[classObject.javaClass.name]=methodList
 
         currentClazz=classObject.javaClass
 
