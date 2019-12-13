@@ -7,13 +7,17 @@ import android.widget.TextView
 import com.jason.eventengine.EventEngine
 import com.jason.eventengine.EventSubscribe
 import com.jason.eventengine.ThreadMode
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
 
 class MainActivity :  BaseActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        EventEngine.getDefault().register(this)
+        EventBus.getDefault().register(this)
+
+//        EventEngine.getDefault().register(this)
         findViewById<TextView>(R.id.hello).setOnClickListener {
 //            EventEngine.getDefault().post(TestBeanTwo("你好世界"))
 
@@ -23,8 +27,14 @@ class MainActivity :  BaseActivity(){
     }
 
 
-    @EventSubscribe(threadMode = ThreadMode.MainThread)
+    @Subscribe
     fun onEvent(bean:TestBeanTwo){
         findViewById<TextView>(R.id.hello).text="你好世界"
     }
+
+    @Subscribe
+    fun onEventTwo(bean:TestBeanTwo){
+        findViewById<TextView>(R.id.hello).text="你好世界"
+    }
+
 }
