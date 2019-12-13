@@ -27,13 +27,13 @@ class EventFinder(var processor:EventProcessor){
 
         while (currentClazz!=null){
 
-            findByReflection(currentClazz!!,methodList)
+            findByReflection(currentClazz!!,methodList,classObject)
 
             moveToSuperclass(currentClazz!!)
         }
     }
 
-    private fun findByReflection(clazz: Class<Any>,methodList:CopyOnWriteArrayList<MethodHolder>){
+    private fun findByReflection(clazz: Class<Any>,methodList:CopyOnWriteArrayList<MethodHolder>,classObject: Any){
         val methods=clazz.declaredMethods
         methods.forEach {
             val modifier=it.modifiers
@@ -42,7 +42,7 @@ class EventFinder(var processor:EventProcessor){
                 if (params.size==1){
                     val annotation=it.getAnnotation(EventSubscribe::class.java)
                     if (annotation!=null){
-                        val holder= MethodHolder(params[0].name,it,clazz,annotation.sticky,
+                        val holder= MethodHolder(params[0].name,it,classObject,annotation.sticky,
                             annotation.threadMode,annotation.delayTime)
                         methodList.add(holder)
                         if (holder.sticky){

@@ -15,17 +15,16 @@ class MainActivity :  BaseActivity(){
         setContentView(R.layout.activity_main)
         EventEngine.getDefault().register(this)
         findViewById<TextView>(R.id.hello).setOnClickListener {
-            EventEngine.getDefault().post(TestBeanTwo("你好世界"))
+//            EventEngine.getDefault().post(TestBeanTwo("你好世界"))
 
-//            EventEngine.getDefault().postSticky(TestBeanTwo("你好世界"))
-//            startActivity(Intent(this,Main2Activity::class.java))
+            startActivity(Intent(this,Main2Activity::class.java))
         }
 
     }
 
 
     @EventSubscribe(threadMode = ThreadMode.MainThread)
-    fun onEvent(bean:TestBean){
+    fun onEvent(bean:TestBeanTwo){
         findViewById<TextView>(R.id.hello).text="你好世界"
     }
 }

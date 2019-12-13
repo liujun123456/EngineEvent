@@ -12,6 +12,8 @@ class Main2Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
         EventEngine.getDefault().register(this)
+
+        EventEngine.getDefault().postSticky(TestBeanTwo("你好世界"))
     }
 
     @EventSubscribe(sticky = true)

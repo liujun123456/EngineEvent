@@ -8,7 +8,7 @@ import java.lang.reflect.Method
  * @mobile 18711832023
  */
 class MethodHolder(
-    var eventType: Any,
+    var eventType: String,
     var method: Method,
     var classPlace: Any,
     var sticky: Boolean,
